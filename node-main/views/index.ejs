@@ -1,0 +1,11 @@
+
+<h1>Hello, world!</h1>
+<p><%= nama %></p>
+
+<h5>List Employees</h5>
+<% employees.forEach(emp => { %>
+<ul>
+    <li><%= emp.nama %></li>
+    <li><%= emp.email %></li>
+</ul>
+<% }) %>
