@@ -2,12 +2,12 @@ const express = require('express')
 const app = express()
 const PORT = 3000
 const bodyParser = require('body-parser')
-const studentRouter = require('./routes/student-router')
+const studentRoutes = require('./routes/student-router')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use('/student', studentRouter)
+app.use('/student', studentRoutes)
 
 app.get('/', (req, res) => {
   res.json({

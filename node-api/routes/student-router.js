@@ -1,31 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const {
-  getStudents,
-  findStudent,
-  storeStudent,
-  editStudent,
-  destroyStudent,
-} = require('../controllers/studentController')
+const studentController = require('../controllers/studentController')
 
-router.get('/', (req, res) => {
-  getStudents(res)
-})
+router.get('/', studentController.getAllStudents)
 
-router.get('/:nim', (req, res) => {
-  findStudent(res, req.params.nim)
-})
+router.post('/', studentController.createStudent)
 
-router.post('/', (req, res) => {
-  storeStudent(res, req.body)
-})
+router.get('/:nim', studentController.getStudent)
 
-router.put('/', (req, res) => {
-  editStudent(res, req.body)
-})
+router.put('/:nim', studentController.updateStudent)
 
-router.delete('/', (req, res) => {
-  destroyStudent(res, req.body)
-})
+router.delete('/:nim', studentController.deleteStudent)
 
 module.exports = router
