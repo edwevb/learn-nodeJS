@@ -1,5 +1,10 @@
-const response = (statusCode, data, message, res) => {
-  res.status(statusCode).json([
+const success = async (
+  statusCode = 200,
+  data = [],
+  message = 'Success',
+  res
+) => {
+  await res.status(statusCode).json([
     {
       payload: {
         data,
@@ -13,7 +18,19 @@ const response = (statusCode, data, message, res) => {
       },
     },
   ])
-  res.end()
+}
+const failed = (
+  statusCode = 500,
+  serverMessage = '',
+  message = 'Failed',
+  res
+) => {
+  res.status(statusCode).json([
+    {
+      serverMessage,
+      message,
+    },
+  ])
 }
 
-module.exports = response
+module.exports = { success, failed }

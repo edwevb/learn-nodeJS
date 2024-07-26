@@ -1,13 +1,14 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 const bodyParser = require('body-parser')
-const studentRoutes = require('./routes/student-router')
+const routesApi = require('./routes/userRoutes')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use('/student', studentRoutes)
+app.use('/user', routesApi)
 
 app.get('/', (req, res) => {
   res.json({
