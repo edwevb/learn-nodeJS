@@ -1,19 +1,18 @@
-const db = require('../database/connection')
+const db = require('../config/database')
 const response = require('../utils/response')
 
-const getAllStudents = (res, querySQL) => {
-  return db.query(querySQL, (err, fields) => {
-    response(200, fields[0], 'Success', res)
-  })
+const getAllUsers = () => {
+  const SQLQuery = 'SELECT * FROM tb_users'
+  return db.execute(SQLQuery)
 }
 
-const getStudent = (res, querySQL) => {
+const finddUser = (res, querySQL) => {
   return db.query(querySQL, (err, fields) => {
     response(200, fields, 'Success', res)
   })
 }
 
-const addStudent = (res, querySQL) => {
+const storedUser = (res, querySQL) => {
   return db.query(querySQL, (err, fields) => {
     if (err) response(500, 'invalid', 'error', res)
     if (fields?.affectedRows) {
@@ -26,7 +25,7 @@ const addStudent = (res, querySQL) => {
   })
 }
 
-const updateStudent = (res, querySQL) => {
+const updatedUser = (res, querySQL) => {
   return db.query(querySQL, (err, fields) => {
     if (err) response(500, 'invalid', 'error', res)
     if (fields?.affectedRows) {
@@ -41,7 +40,7 @@ const updateStudent = (res, querySQL) => {
   })
 }
 
-const deleteStudent = (res, querySQL) => {
+const deletedUser = (res, querySQL) => {
   return db.query(querySQL, (err, fields) => {
     if (err) response(500, 'invalid', 'error', res)
     if (fields?.affectedRows) {
@@ -57,9 +56,9 @@ const deleteStudent = (res, querySQL) => {
 }
 
 module.exports = {
-  getAllStudents,
-  getStudent,
-  addStudent,
-  updateStudent,
-  deleteStudent,
+  getAllUsers,
+  finddUser,
+  storedUser,
+  updatedUser,
+  deletedUser,
 }
