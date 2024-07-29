@@ -21,7 +21,7 @@ const success = async (
 }
 const failed = (
   statusCode = 500,
-  serverMessage = '',
+  serverMessage = ' ',
   message = 'Failed',
   res
 ) => {

@@ -1,7 +1,9 @@
-const mysql2 = require('mysql2/promise')
+const mysql = require('mysql2/promise')
 
 // Create the connection to database
-const db = mysql2.createPool({
+console.log('DB Connected..')
+
+const db = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
